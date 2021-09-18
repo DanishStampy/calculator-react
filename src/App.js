@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function App() {
   const [calc, setCalc] = useState("");
@@ -47,9 +49,22 @@ function App() {
     setCalc(value);
   }
 
+  useEffect( () => {
+    AOS.init({
+      offset: 200,
+      duration: 1000,
+      easing: 'ease-out'
+    })
+  })
+
   return (
     <div className="App">
-      <div className="calculator">
+      <div className="note" data-aos="fade-down">
+        <p>
+          Hi, this is my first beginner ReactJs project. A simple calculator with basic functions. It still need some upgrade.
+        </p>
+      </div>
+      <div className="calculator" data-aos="fade-down">
         <div className="display">
           { result ? <span>({result})</span> : '' }&nbsp;
           { calc || "0"}
